@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="style.css">
+  <title>SoccerVersa</title>
+</head>
+<body>
+    <!-- navigation starts -->
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light .navbar-expand-lg" id="ftco-navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><img src="images/1-removebg-preview.png" alt="" height="150"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collpase navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="#Tournament" class="nav-link">Tournament</a></li>
+          <li class="nav-item"><a href="#ranking" class="nav-link">Ranking</a></li>
+          <li class="nav-item"><a href="#gallery" class="nav-link">Players Gallery</a></li>
+          <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
+          <li class="nav-item"><a href="#ranking"  class="nav-link">Top 10 Scores</a></li>
+          <li class="nav-item"><a href="#play"  class="nav-link">Play</a></li>
+          <li class="nav-item cta btn btn1" data-aos="zoom-in"
+            onclick="document.getElementById('contactForm').style.display='block'">
+            <a href="#" class="nav-link" id="contact">Contact</a>
+          </li>
+          <div id="contactForm" class="contactmodal">
+            <div class="contact-modal-content animate">
+              <span onclick="document.getElementById('contactForm').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+              <form id="contact-form">
+                <h2 class="text-center">Contact Us</h2>
+                <hr>
+                <label for="name"><b>Full Name</b></label>
+                <input type="text" id="name" placeholder="Enter your full name" name="name" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" id="email" placeholder="Enter your email" name="email" required>
+
+                <label for="message"><b>Message</b></label>
+                <textarea id="message" placeholder="Enter your message" name="message" required></textarea>
+
+                <button type="submit" class="submit-btn">Submit</button>
+              </form>
+            </div>
+          </div>
+          <li class="nav-item cta btn btn1" id="popup" class="feedback-button" onclick="toggle_visibility()">
+            <a href="#" class="nav-link" id="feedback">FeedBack</a>
+          </li>
+
+          <div id="feedback-main">
+            <div id="feedback-div">
+              <form class="form" id="feedback-form1" name="form1" enctype="multipart/form-data">
+                <p class="name">
+                  <input name="name" type="text" class="feedback-input" required placeholder="Name"
+                    id="feedback-name" />
+                </p>
+                <p class="email">
+                  <input name="email" type="email" class="feedback-input" id="feedback-email" placeholder="Email"
+                    required />
+                </p>
+                <p class="text">
+                  <textarea name="comment" class="feedback-input" id="feedback-comment" required
+                    placeholder="Hey, I really love the site but I believe that you could incorporate some ..... and also get rid of the ...... on the section."></textarea>
+                </p>
+                <div class="feedback-submit">
+                  <input type="submit" value="SEND" id="feedback-button-blue" />
+                  <div class="feedback-ease"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <script>
+            function toggle_visibility() {
+              var e = document.getElementById('feedback-main');
+              e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+            }
+
+            document.getElementById('feedback-form1').addEventListener('submit', function (event) {
+              event.preventDefault();
+
+              var name = document.getElementById('feedback-name').value.trim();
+              var email = document.getElementById('feedback-email').value.trim();
+              var comment = document.getElementById('feedback-comment').value.trim();
+
+              // Validation for name
+              if (!/^[A-Za-z\s]{2,100}$/.test(name)) {
+                alert("Please enter a valid name (letters and spaces only, between 2 and 100 characters).");
+                return;
+              }
+
+              // Store data in local storage
+              var feedbackData = {
+                name: name,
+                email: email,
+                comment: comment
+              };
+              localStorage.setItem('feedback', JSON.stringify(feedbackData));
+
+              alert("Thank you for your feedback!");
+
+              // Optionally, clear the form after submission
+              document.getElementById('feedback-form1').reset();
+            });
+          </script>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- navigation ends -->
+
+    <!-- slider  section start -->
+    <section class="home-slider owl-carousel js-fullheight">
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg.webp);">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+            data-scrollax-parent="true">
+  
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <span class="subheading">World Cup 2024™</span>
+              <h1 class="mb-4">It’s time to prepare for the show in Uzbekistan from 14 September – 6 October.</h1>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg1.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+            data-scrollax-parent="true">
+  
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <span class="subheading">"Goals are dreams realized."</span>
+              <h1 class="mb-4">"Goals transform dreams into actionable steps. They turn aspirations into concrete
+                achievements through focused effort."</h1>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg_4.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+            data-scrollax-parent="true">
+  
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <span class="subheading"> "Champions are made."</span>
+              <h1 class="mb-4">"Champions are forged through relentless dedication, effort, resilience, and hard work."
+              </h1>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg3.avif);">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+            data-scrollax-parent="true">
+  
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <span class="subheading">"Victory is everything."</span>
+              <h1 class="mb-4">"Victory is the ultimate reward for perseverance and effort. It signifies achieving success
+                and reaching one's goals."</h1>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- slider  section end  -->
+    <!-- featured section starts  -->
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="featured">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="featured-menus ftco-animate">
+                    <div class="menu-img img" style="background-image: url(images/team1.png);"></div>
+                    <div class="text text-center">
+                      <h3>Arnett G</h3>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="featured-menus ftco-animate">
+                    <div class="menu-img img" style="background-image: url(images/team2.png);"></div>
+                    <div class="text text-center">
+                      <h3>Mt.Pleasant</h3>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="featured-menus ftco-animate">
+                    <div class="menu-img img" style="background-image: url(images/team3.png);"></div>
+                    <div class="text text-center">
+                      <h3>Alajuelense</h3>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="featured-menus ftco-animate">
+                    <div class="menu-img img" style="background-image: url(images/team4.png);"></div>
+                    <div class="text text-center">
+                      <h3>Alianza</h3>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- featured section ends  -->
+
+    <div class="ad" id="play">
+      <img src="https://tpc.googlesyndication.com/simgad/7538413971154982232" border="0" width="80%" height="90" alt=""
+        class="img_ad">
+    </div>
+    <!-- about us section starts  -->
+    <section class="ftco-wrap-about" id="about">
+      <div class="intro">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="intro_content">
+                <div class="intro_subtitle page_subtitle">Ranking the top men's </div>
+                <div class="intro_title">
+                  <h2>soccer players of the 21st century</h2>
+                </div>
+                <div class="intro_text">
+                  <p>Lionel Messi, Cristiano Ronaldo, Karim Benzema and Neymar are just some of the names who come up in
+                    the debate over the best soccer players in the 21st century. </p>
+                  <h6>Lionel Messi</h6>
+                  <p>Messi winning the World Cup in Argentina in 2022 was perhaps the biggest Hollywood ending that soccer
+                    has ever seen. After losing the 2014 final, it looked like it would never happen for Messi,but the
+                    crowning moment of his career finally arrived at the age of 34. He scored twice in the final as
+                    Argentina beat France on penalties, sparking an outpouring of emotion and celebrations around the
+                    globe.</p>
+                  <h6>Cristiano Ronaldo</h6>
+                  <p>Cristiano Ronaldo's story is one of a supremely talented athlete, but matched with a drive and will
+                    to win. His career is best summed up by one of his own quotes: "If you don't believe you are the best,
+                    then you will never achieve all that you are capable of." Ronaldo has shown that belief throughout
+                    more than two decades at the top of world soccer and often proved it to be true.</p>
+  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-2 col-md-6 intro_col">
+                  <div class="intro_image"><img src="images/cristiano-ronaldo.jpg" alt="intro" height="400px"></div>
+                </div>
+                <div class="col-xl-2 col-md-6 intro_col">
+                  <div class="intro_image"><img src="images/Lionel-Messi-.jpg" alt="intro" height="400px"></div>
+                </div>
+  
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <section id="Tournament">
+        <div class="container py-5">
+          <h1 class="text-center my-4">Upcoming <span> Soccer Tournaments</span></h1>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="card">
+                      <img src="images/tour1.webp" class="card-img-top" alt="Tournament 1">
+                      <div class="card-body">
+                          <h5 class="card-title">FIFA World Cup 26™</h5>
+                          <p class="card-text">Date: August 23, 2024</p>
+                          
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <img src="images/tour2.webp" class="card-img-top" alt="Tournament 2">
+                      <div class="card-body">
+                          <h5 class="card-title">2024 Empire Cup Classic</h5>
+                          <p class="card-text">
+                            August 23, 20243</p>
+                     
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <img src="images/tour3.webp" class="card-img-top" alt="Tournament 3">
+                      <div class="card-body">
+                          <h5 class="card-title">2024 Fall Preseason Friendlies</h5>
+                          <p class="card-text">Date:
+                            August 23, 2024</p>
+                         
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+     
+      
+  
+      </section>
+      <section id="ranking">
+      <div class="container-fluid row top-ranked" >
+        <!-- <H1>Latest Man's Worls Ranking</H1> -->
+  
+        <div class="col-md-2">
+          <img src="images/ARG.png" alt="">
+          <h5>Argentina</h5>
+          <p>Top Ranked</p>
+          <h2>1st</h2>
+        </div>
+        <div class="col-md-2"> <img src="images/VEN.png" alt="">
+          <h5>Venezuela</h5>
+          <p>Biggest Climber</p>
+          <h2>17</h2>
+        </div>
+        <div class="col-md-2"> <img src="images/SAM.png" alt="">
+          <h5>Spain</h5>
+          <p>Most Points scored</p>
+          <h2>+105.75</h2>
+        </div>
+        <div class="col-md-2"> <img src="images/CZE.png" alt="">
+          <h5>Czechia</h5>
+          <p>Biggest drop</p>
+          <h2>13</h2>
+        </div>
+        <div class="col-md-2"> <img src="images/SAM.png" alt="">
+          <h5>Samoa</h5>
+          <p>Most Points Lost</p>
+          <h2>-44.09</h2>
+        </div>
+      </div>
+  
+      <div class="container" >
+        <h1 class="text-center">Top 10 Highest <span> Scoring Players/Teams</span></h1>
+  <style>
+    .container h1 span{
+      font-size: 50px;
+    color: #c8a97e;
+    font-weight: normal;
+    margin-bottom: 0;
+    line-height: 1;
+    font-family: "Great Vibes", cursive;
+    }
+    </style>
+        <!-- Filter and Sort Controls -->
+        <div class="d-flex justify-content-between mb-3">
+            <input type="text" id="filterInput" class="form-control me-2" placeholder="Search by name...">
+            <button id="sortScoreBtn" class="btn btn-primary">Sort by Score</button>
+            <button id="sortNameBtn" class="btn btn-secondary">Sort by Name</button>
+        </div>
+  
+        <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Goals/Points</th>
+                    <th scope="col">Profile</th>
+                </tr>
+            </thead>
+            <tbody id="rankingTable" >
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+      <!-- Modal -->
+      <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel" >Player/Team Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody" >
+                
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+    <section class="about-section">
+      <div class="container">
+          <div class="row clearfix">
+              
+                <!--Content Column-->
+                <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                  <div class="inner-column">
+                      <div class="sec-title">
+                        <div class="title">About Game</div>
+                          <h2>Unleashing the Spirit of Soccer <span> the Spirit of Soccer</span></h2>
+                        </div>
+                        <div class="text">football, game in which two teams of 11 players, using any part of their bodies except their hands and arms, try to maneuver the ball into the opposing team’s goal. Only the goalkeeper is permitted to handle the ball and may do so only within the penalty area surrounding the goal. The team that scores more goals wins.
+  
+  
+                          Carlos Alberto Torres
+                          Captain Carlos Alberto Torres holding the Jules Rimet trophy aloft after Brazil's triumph at the 1970 World Cup.
+                          Football’s governing body, the Fédération Internationale de Football Association (FIFA), estimated that at the turn of the 21st century there were approximately 250 million football players and over 1.3 billion people “interested” in football; in 2010 a combined television audience of more than 26 billion watched football’s premier tournament, the quadrennial monthlong World Cup finals.</div>
+                       
+                     
+                    </div>
+                </div>
+                
+                <!--Image Column-->
+                <div class="image-column col-md-6 col-sm-12 col-xs-12">
+                  <div class="inner-column " data-wow-delay="0ms" data-wow-duration="1500ms">
+                      <div class="image">
+                          <img src="images/about-game.jpg" alt="">
+                          
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+  
+  
+    <main id="gallery">
+      <div class="gallery_title">
+        <h1>Players <span>Gallery</span></h1>
+      </div>
+    
+      <article class='gallery'>
+       
+          <img src="images/gallery1.jpeg">
+      
+          <img src="images/messi.jpeg" alt="second image">
+     
+          <img src="images/gallery2.jpeg" alt="third image">
+      
+          <img src="images/galery3.jpeg" alt="fourth image">
+      
+          <img src="images/gallery 4.jpeg" alt="fifth image">
+       
+          <img src="images/gallery5.jpeg" alt="sixth image">
+        
+     
+          <img src="images/gallery6.jpeg" alt="fourth image">
+       
+        
+          <img src="images/gallery7.jpeg" alt="second image">
+          <img src="images/gallery8.jpeg" alt="second image">
+          <img src="images/gallery9.jpeg" alt="second image">
+          <img src="images/gallery7.jpeg" alt="second image">
+          <img src="images/gallery10.jpeg" alt="second image">
+      </article>
+    </main>
+    <script> 
+      window.addEventListener("load", function () {
+        baguetteBox.run(".gallery");
+      });
+  
+      let input = document.getElementById('input');
+  
+  const handleSearch = (e) => {
+    let inputValue = e.target.value.toLowerCase();
+    let array = document.getElementsByClassName('item')
+  
+    for (let i = 0; i < array.length; i++) {
+      let image = array[i]
+      let caption = image.getAttribute('data-caption').toLowerCase()
+      let title = image.getAttribute('title').toLowerCase()
+      caption.includes(inputValue) || title.includes(inputValue)? image.style.display = 'inline' : image.style.display = 'none'
+    }
+  }
+  input.addEventListener('keyup', handleSearch);
+  
+  window.addEventListener("load", function () {
+              baguetteBox.run(".gallery", {
+                captions: true,
+                buttons: "auto",
+                animation: "fadeIn",
+              });
+  })
+    </script>
+    
+  <SECtion id="news">
+    <div class="latest-news">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 title-section">
+            <h2 class="heading"><span>Latest</span> News</h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <div class="post-entry">
+              <a href="#">
+                <img src="images/news1.webp" alt="Image" class="img-fluid">
+              </a>
+              <div class="caption">
+                <div class="caption-inner">
+                  <h3 class="mb-3">Welbeck is 'a role model'</h3>
+                  <div class="author d-flex align-items-center">
+                   
+                    <div class="text">
+                      <h4>Mellissa Allison</h4>
+                      <span>May 19, 2020 &bullet; Sports</span>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="post-entry">
+              <a href="#">
+                <img src="images/news2.avif" alt="Image" class="img-fluid">
+              </a>
+              <div class="caption">
+                <div class="caption-inner">
+                  <h3 class="mb-3">Arsenal answer Arteta’s call to be efficient</h3>
+                  <div class="author d-flex align-items-center">
+                  
+                    <div class="text">
+                      <h4>Mellissa Allison</h4>
+                      <span>May 19, 2020 &bullet; Sports</span>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="post-entry">
+              <a href="#">
+                <img src="images/news3.avif" alt="Image" class="img-fluid">
+              </a>
+              <div class="caption">
+                <div class="caption-inner">
+                  <h3 class="mb-3">Dogba set for Juvendu return?</h3>
+                  <div class="author d-flex align-items-center">
+                   
+                    <div class="text">
+                      <h4>Mellissa Allison</h4>
+                      <span>May 19, 2020 &bullet; Sports</span>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </SECtion>
+    <footer class="footer-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="images/1-removebg-preview.png" alt="logo" width="50%">
+          </div>
+          <div class="col-md-8">
+            <div class="widget mb-3">
+              <h3>Links</h3>
+                <a href="#Tournament">Tournament</a>
+                <a href="#gallery">players Gallery</a>
+                <a href="#ranking">Ranking</a>
+              <a href="#play">Game Schedules</a>
+                <a href="#ranking">Top 10 Scores</a>
+                <a href="#contact">Contact</a>
+          
+            </div>
+            <div class="widget mb-3">
+              <h3>Social</h3>
+              
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">02134385418</a>
+            
+            </div>
+          </div>
+          <div class="col-md-3">
+            
+          </div>
+  
+        </div>
+  
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div class=" pt-5">
+              <p>
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script> All rights reserved.
+  
+              </p>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="playersdata.js"></script>
+    
+  </body>
+  
+  </html>
+
+
+ 
+    
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- scripts -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="main.js"></script>
+  <script src="data.js"></script>
+  <script src="js/playersdata.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+</body>
+
+</html>
